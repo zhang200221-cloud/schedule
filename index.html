@@ -84,8 +84,13 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--color-bo
 </head>
 <body>
 <div id="app"></div>
-<script src="data.js"></script>
+<script src="data.js" onerror=""></script>
 <script>
+// 備援：data.js 不存在時（GitHub Pages）仍能正常運作
+if(typeof uid==='undefined'){function uid(){return Math.random().toString(36).slice(2,9);}}
+if(typeof DEFAULT_FAQ_CATS==='undefined'){var DEFAULT_FAQ_CATS=['業務','採購','布組','研發','實驗室','其他'];}
+if(typeof getSample==='undefined'){function getSample(){return [];}}
+
 const state={view:'list',activeProject:null,projects:[],modal:null,editingEvent:null,editingSub:null};
 const SK='project_tracker_v10_local';
 
